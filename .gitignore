@@ -141,3 +141,10 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# data-npm specific
+data-logging/node_modules/
+.DS_Store
+.idea/
+.vscode/
+*.npmrc
