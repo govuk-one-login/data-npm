@@ -12,6 +12,7 @@
   "types": "./dist/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
+    "@govuk-one-login:registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "repository": {
