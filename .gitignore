@@ -147,4 +147,3 @@ data-logging/node_modules/
 .DS_Store
 .idea/
 .vscode/
-*.npmrc
