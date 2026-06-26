@@ -24,7 +24,7 @@
     "format": "prettier --write .",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "npm run build --workspaces && changeset publish"
+    "release": "npm run build && changeset publish"
   },
   "dependencies": {
     "@aws-lambda-powertools/logger": "^2.25.2",
