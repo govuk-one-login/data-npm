@@ -18,7 +18,7 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: '@govuk-one-login'
       - run: npm install
-      - uses: changesets/action@e9cc6e1c77dc12f8c85a47d9ba4b4b0e68cc8cd0 # v1.4.7
+      - uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
           publish: npm run release
         env:
