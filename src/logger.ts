@@ -1,45 +1,63 @@
 import { Logger } from '@aws-lambda-powertools/logger';
 import { Metrics, MetricUnit } from '@aws-lambda-powertools/metrics';
+import { Tracer } from '@aws-lambda-powertools/tracer';
 import { LogItemExtraInput } from '@aws-lambda-powertools/logger/types';
-import type { Context } from 'aws-lambda';
+
+export const dataTracer = new Tracer();
 
 export class DataLogger<TLogEvents extends string = string> extends Logger {
-  public readonly metrics: Metrics;
-
+  public metrics: Metrics;
+  
   constructor(serviceName: string, namespace?: string) {
-    super({ serviceName });
-    this.metrics = new Metrics({ serviceName, namespace });
+    super();
+    this.metrics = new Metrics({
+      serviceName: serviceName,
+      namespace: namespace,
+    });
   }
-
-  initialise(context: Context): void {
-    this.addContext(context);
-    this.refreshSampleRateCalculation();
-  }
-
-  infoWithMetrics(
-    message: string,
+  
+  debugWithMetrics = (
+    input: string,
     metric: TLogEvents,
-    ...extra: LogItemExtraInput
-  ): void {
-    this.info(message, ...extra);
+    ...extraInput: LogItemExtraInput
+  ): void => {
+    super.debug(input, ...extraInput);
     this.metrics.addMetric(metric, MetricUnit.Count, 1);
-  }
-
-  warnWithMetrics(
-    message: string,
+  };
+  
+  infoWithMetrics = (
+    input: string,
     metric: TLogEvents,
-    ...extra: LogItemExtraInput
-  ): void {
-    this.warn(message, ...extra);
+    ...extraInput: LogItemExtraInput
+  ): void => {
+    super.info(input, ...extraInput);
     this.metrics.addMetric(metric, MetricUnit.Count, 1);
-  }
-
-  errorWithMetrics(
-    message: string,
+  };
+  
+  warnWithMetrics = (
+    input: string,
     metric: TLogEvents,
-    ...extra: LogItemExtraInput
-  ): void {
-    this.error(message, ...extra);
+    ...extraInput: LogItemExtraInput
+  ): void => {
+    super.warn(input, ...extraInput);
     this.metrics.addMetric(metric, MetricUnit.Count, 1);
-  }
+  };
+  
+  errorWithMetrics = (
+    input: string,
+    metric: TLogEvents,
+    ...extraInput: LogItemExtraInput
+  ): void => {
+    super.error(input, ...extraInput);
+    this.metrics.addMetric(metric, MetricUnit.Count, 1);
+  };
+  
+  criticalWithMetrics = (
+    input: string,
+    metric: TLogEvents,
+    ...extraInput: LogItemExtraInput
+  ): void => {
+    super.critical(input, ...extraInput);
+    this.metrics.addMetric(metric, MetricUnit.Count, 1);
+  };
 }
