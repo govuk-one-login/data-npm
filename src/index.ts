@@ -1,2 +1,2 @@
-export { DataLogger } from './logger.js';
-export { LogEvents } from './log-events.js';
+export { DataLogger, dataTracer } from './logger';
+export { LogEvents } from './log-events';
