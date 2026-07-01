@@ -21,7 +21,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     metric: TLogEvents,
     ...extraInput: LogItemExtraInput
   ): void => {
-    super.debug(input, ...extraInput);
+    this.debug(input, ...extraInput);
     this.metrics.addMetric(metric, MetricUnit.Count, 1);
   };
   
@@ -30,7 +30,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     metric: TLogEvents,
     ...extraInput: LogItemExtraInput
   ): void => {
-    super.info(input, ...extraInput);
+    this.info(input, ...extraInput);
     this.metrics.addMetric(metric, MetricUnit.Count, 1);
   };
   
@@ -39,7 +39,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     metric: TLogEvents,
     ...extraInput: LogItemExtraInput
   ): void => {
-    super.warn(input, ...extraInput);
+    this.warn(input, ...extraInput);
     this.metrics.addMetric(metric, MetricUnit.Count, 1);
   };
   
@@ -48,7 +48,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     metric: TLogEvents,
     ...extraInput: LogItemExtraInput
   ): void => {
-    super.error(input, ...extraInput);
+    this.error(input, ...extraInput);
     this.metrics.addMetric(metric, MetricUnit.Count, 1);
   };
   
@@ -57,7 +57,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     metric: TLogEvents,
     ...extraInput: LogItemExtraInput
   ): void => {
-    super.critical(input, ...extraInput);
+    this.critical(input, ...extraInput);
     this.metrics.addMetric(metric, MetricUnit.Count, 1);
   };
 }

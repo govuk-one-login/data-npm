@@ -5,6 +5,7 @@
 ### Patch Changes
 
 - adding tracer functionality from fraud-npm to data-npm
+- fix TypeScript errors in test mocks
 
 ## 0.0.1
 

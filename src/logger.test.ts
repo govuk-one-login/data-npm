@@ -18,7 +18,7 @@ describe('DataLogger', () => {
     const infoSpy = vi.spyOn(logger, 'info').mockImplementation(() => {});
     const metricSpy = vi
       .spyOn(logger.metrics, 'addMetric')
-      .mockImplementation(() => {});
+      .mockImplementation(() => logger.metrics);
 
     logger.infoWithMetrics('msg', LogEvents.StartedProcessing);
 
@@ -34,7 +34,7 @@ describe('DataLogger', () => {
     const warnSpy = vi.spyOn(logger, 'warn').mockImplementation(() => {});
     const metricSpy = vi
       .spyOn(logger.metrics, 'addMetric')
-      .mockImplementation(() => {});
+      .mockImplementation(() => logger.metrics);
 
     logger.warnWithMetrics('msg', LogEvents.ErrorProcessing);
 
@@ -50,7 +50,7 @@ describe('DataLogger', () => {
     const errorSpy = vi.spyOn(logger, 'error').mockImplementation(() => {});
     const metricSpy = vi
       .spyOn(logger.metrics, 'addMetric')
-      .mockImplementation(() => {});
+      .mockImplementation(() => logger.metrics);
 
     logger.errorWithMetrics('msg', LogEvents.ErrorProcessing);
 
