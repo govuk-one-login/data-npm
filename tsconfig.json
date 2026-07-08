@@ -9,6 +9,7 @@
     "rootDir": "src",
     "outDir": "./dist/",
     "skipLibCheck": true,
+    "declaration": true,
     "sourceMap": true,
     "strict": true,
     "target": "es2022",

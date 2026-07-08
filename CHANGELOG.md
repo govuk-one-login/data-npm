@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.4
+
+### Patch Changes
+
+- Added "declaration": true to tsconfig.json so .d.ts files are emitted on build
+
 ## 0.0.3
 
 ### Patch Changes
