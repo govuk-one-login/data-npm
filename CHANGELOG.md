@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.3
+
+### Patch Changes
+
+- correct build output path and ESM import extensions
+
 ## 0.0.2
 
 ### Patch Changes
