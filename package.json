@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/data-npm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Standardised logger for GOV.UK One Login data pod Lambda functions",
   "type": "module",
   "files": [
