@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/data-npm",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Standardised logger for GOV.UK One Login data pod Lambda functions",
   "type": "module",
   "files": [
@@ -10,6 +10,9 @@
   "exports": "./dist/index.js",
   "private": false,
   "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=24"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "@govuk-one-login:registry": "https://npm.pkg.github.com",
@@ -22,10 +25,18 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest run --coverage",
-    "format": "prettier --write .",
+    "lint": "oxlint --config oxlint.config.ts",
+    "lint:fix": "oxlint --config oxlint.config.ts --fix",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "npm run build && changeset publish"
+    "release": "npm run build && changeset publish",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{ts,js}": [
+      "oxlint --config oxlint.config.ts --fix",
+      "oxlint --config oxlint.config.ts"
+    ]
   },
   "dependencies": {
     "@aws-lambda-powertools/logger": "^2.25.2",
@@ -33,11 +44,16 @@
     "@aws-lambda-powertools/tracer": "^2.25.2"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.0",
+    "@tsconfig/node-ts": "^23.6.4",
+    "@tsconfig/node24": "^24.0.4",
+    "@tsconfig/strictest": "^2.0.8",
     "@types/aws-lambda": "^8.10.126",
     "@vitest/coverage-v8": "^3.0.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2",
-    "vitest": "^3.0.0",
-    "@changesets/cli": "^2.27.0"
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
+    "oxlint": "^1.73.0",
+    "typescript": "^7.0.2",
+    "vitest": "^3.0.0"
   }
 }

@@ -1,19 +1,18 @@
 {
+  "extends": [
+    "@tsconfig/node24/tsconfig.json",
+    "@tsconfig/node-ts/tsconfig.json",
+    "@tsconfig/strictest/tsconfig.json"
+  ],
   "compilerOptions": {
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "noImplicitAny": true,
-    "lib": ["es2022"],
-    "rootDir": "src",
+    "skipLibCheck": false,
+    "erasableSyntaxOnly": false,
     "outDir": "./dist/",
-    "skipLibCheck": true,
+    "rootDir": "src",
     "declaration": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "es2022",
-    "types": ["vitest/globals"]
+    "sourceMap": true
   },
   "include": ["src"],
   "exclude": ["src/**/*.test.ts"]
