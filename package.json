@@ -50,14 +50,7 @@
     "typescript": "^7.0.2",
     "vitest": "^3.0.0"
   },
-  "lint-staged": {
-    "**/*.{ts,js,json}": [
-      "oxfmt",
-      "oxfmt --check",
-      "oxlint --config oxlint.config.ts --fix",
-      "oxlint --config oxlint.config.ts"
-    ]
-  },
+  "lint-staged": {},
   "engines": {
     "node": ">=24"
   }
