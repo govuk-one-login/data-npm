@@ -16,7 +16,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: https://npm.pkg.github.com
-          scope: '@govuk-one-login'
+          scope: "@govuk-one-login"
       - run: npm install
       - uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:

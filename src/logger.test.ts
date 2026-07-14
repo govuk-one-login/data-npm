@@ -1,64 +1,52 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { DataLogger } from './logger.js';
-import { LogEvents } from './log-events.js';
-import { MetricUnit } from '@aws-lambda-powertools/metrics';
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { DataLogger } from "./logger.js";
+import { LogEvents } from "./log-events.js";
+import { MetricUnit } from "@aws-lambda-powertools/metrics";
 
-describe('DataLogger', () => {
+describe("DataLogger", () => {
   let logger: DataLogger<LogEvents>;
 
   beforeEach(() => {
-    logger = new DataLogger('test-service', 'test-namespace');
+    logger = new DataLogger("test-service", "test-namespace");
   });
 
-  it('exposes a metrics instance', () => {
+  it("exposes a metrics instance", () => {
     expect(logger.metrics).toBeDefined();
   });
 
-  it('infoWithMetrics calls info and addMetric', () => {
-    const infoSpy = vi.spyOn(logger, 'info').mockImplementation(() => {});
+  it("infoWithMetrics calls info and addMetric", () => {
+    const infoSpy = vi.spyOn(logger, "info").mockImplementation(() => {});
     const metricSpy = vi
-      .spyOn(logger.metrics, 'addMetric')
+      .spyOn(logger.metrics, "addMetric")
       .mockImplementation(() => logger.metrics);
 
-    logger.infoWithMetrics('msg', LogEvents.StartedProcessing);
+    logger.infoWithMetrics("msg", LogEvents.StartedProcessing);
 
-    expect(infoSpy).toHaveBeenCalledWith('msg');
-    expect(metricSpy).toHaveBeenCalledWith(
-      LogEvents.StartedProcessing,
-      MetricUnit.Count,
-      1
-    );
+    expect(infoSpy).toHaveBeenCalledWith("msg");
+    expect(metricSpy).toHaveBeenCalledWith(LogEvents.StartedProcessing, MetricUnit.Count, 1);
   });
 
-  it('warnWithMetrics calls warn and addMetric', () => {
-    const warnSpy = vi.spyOn(logger, 'warn').mockImplementation(() => {});
+  it("warnWithMetrics calls warn and addMetric", () => {
+    const warnSpy = vi.spyOn(logger, "warn").mockImplementation(() => {});
     const metricSpy = vi
-      .spyOn(logger.metrics, 'addMetric')
+      .spyOn(logger.metrics, "addMetric")
       .mockImplementation(() => logger.metrics);
 
-    logger.warnWithMetrics('msg', LogEvents.ErrorProcessing);
+    logger.warnWithMetrics("msg", LogEvents.ErrorProcessing);
 
-    expect(warnSpy).toHaveBeenCalledWith('msg');
-    expect(metricSpy).toHaveBeenCalledWith(
-      LogEvents.ErrorProcessing,
-      MetricUnit.Count,
-      1
-    );
+    expect(warnSpy).toHaveBeenCalledWith("msg");
+    expect(metricSpy).toHaveBeenCalledWith(LogEvents.ErrorProcessing, MetricUnit.Count, 1);
   });
 
-  it('errorWithMetrics calls error and addMetric', () => {
-    const errorSpy = vi.spyOn(logger, 'error').mockImplementation(() => {});
+  it("errorWithMetrics calls error and addMetric", () => {
+    const errorSpy = vi.spyOn(logger, "error").mockImplementation(() => {});
     const metricSpy = vi
-      .spyOn(logger.metrics, 'addMetric')
+      .spyOn(logger.metrics, "addMetric")
       .mockImplementation(() => logger.metrics);
 
-    logger.errorWithMetrics('msg', LogEvents.ErrorProcessing);
+    logger.errorWithMetrics("msg", LogEvents.ErrorProcessing);
 
-    expect(errorSpy).toHaveBeenCalledWith('msg');
-    expect(metricSpy).toHaveBeenCalledWith(
-      LogEvents.ErrorProcessing,
-      MetricUnit.Count,
-      1
-    );
+    expect(errorSpy).toHaveBeenCalledWith("msg");
+    expect(metricSpy).toHaveBeenCalledWith(LogEvents.ErrorProcessing, MetricUnit.Count, 1);
   });
 });

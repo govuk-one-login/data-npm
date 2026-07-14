@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.6
+
+### Patch Changes
+
+- migrating formatter from prettier to oxfmt
+
 ## 0.0.5
 
 ### Patch Changes
