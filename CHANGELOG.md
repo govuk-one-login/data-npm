@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.5
+
+### Patch Changes
+
+- Upgrade tooling: Node 24, TypeScript 7, Oxlint, Husky, lint-staged
+
 ## 0.0.4
 
 ### Patch Changes

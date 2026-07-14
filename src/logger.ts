@@ -1,7 +1,7 @@
 import { Logger } from '@aws-lambda-powertools/logger';
 import { Metrics, MetricUnit } from '@aws-lambda-powertools/metrics';
 import { Tracer } from '@aws-lambda-powertools/tracer';
-import { LogItemExtraInput } from '@aws-lambda-powertools/logger/types';
+import type { LogItemExtraInput } from '@aws-lambda-powertools/logger/types';
 
 export const dataTracer = new Tracer();
 
@@ -12,7 +12,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     super();
     this.metrics = new Metrics({
       serviceName: serviceName,
-      namespace: namespace,
+      ...(namespace !== undefined && { namespace }),
     });
   }
   
