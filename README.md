@@ -20,35 +20,35 @@ Requires an `.npmrc` pointing to GitHub Packages:
 ## Usage
 
 ```typescript
-import { DataLogger, LogEvents } from '@govuk-one-login/data-npm';
+import { DataLogger, LogEvents } from "@govuk-one-login/data-npm";
 
-const logger = new DataLogger('my-service', 'my-namespace');
+const logger = new DataLogger("my-service", "my-namespace");
 
 // In your Lambda handler:
 logger.initialise(context);
-logger.infoWithMetrics('Started', LogEvents.StartedProcessing);
+logger.infoWithMetrics("Started", LogEvents.StartedProcessing);
 ```
 
 ### Extending with service-specific log events
 
 ```typescript
-import { DataLogger } from '@govuk-one-login/data-npm';
+import { DataLogger } from "@govuk-one-login/data-npm";
 
 enum MyLogEvents {
-  SomethingHappened = 'Something Happened',
+  SomethingHappened = "Something Happened",
 }
 
-const logger = new DataLogger<MyLogEvents>('my-service');
-logger.infoWithMetrics('msg', MyLogEvents.SomethingHappened);
+const logger = new DataLogger<MyLogEvents>("my-service");
+logger.infoWithMetrics("msg", MyLogEvents.SomethingHappened);
 ```
 
 ## Generic log events
 
-| Event | Value |
-|---|---|
-| `LogEvents.StartedProcessing` | `'Started Processing'` |
+| Event                             | Value                      |
+| --------------------------------- | -------------------------- |
+| `LogEvents.StartedProcessing`     | `'Started Processing'`     |
 | `LogEvents.SuccessfullyProcessed` | `'Successfully Processed'` |
-| `LogEvents.ErrorProcessing` | `'Error Processing'` |
+| `LogEvents.ErrorProcessing`       | `'Error Processing'`       |
 
 ## Development
 

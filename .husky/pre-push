@@ -1,2 +1,5 @@
-npx lint-staged
+npm run format
+npm run format:check
+npm run lint
 npm test
+betterleaks git .
