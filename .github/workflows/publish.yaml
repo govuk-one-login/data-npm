@@ -25,4 +25,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_ACCESS: public
-          HUSKY: "0"
+          HUSKY: "0" # Disable git hooks in CI, checks already run in check-and-scan workflow
