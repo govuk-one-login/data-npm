@@ -3,17 +3,18 @@ import { Logger } from "@aws-lambda-powertools/logger";
 import { MetricUnit, Metrics } from "@aws-lambda-powertools/metrics";
 import { Tracer } from "@aws-lambda-powertools/tracer";
 
-export const dataTracer = new Tracer();
+const METRIC_COUNT = 1;
 
-export class DataLogger<TLogEvents extends string = string> extends Logger {
+const dataTracer = new Tracer();
+
+class DataLogger<TLogEvents extends string = string> extends Logger {
   public metrics: Metrics;
 
   public constructor(serviceName: string, namespace?: string) {
     super();
-    this.metrics = new Metrics({
-      serviceName,
-      ...(namespace !== undefined && { namespace }),
-    });
+    this.metrics = new Metrics(
+      namespace ? { namespace, serviceName } : { serviceName },
+    );
   }
 
   public debugWithMetrics = (
@@ -22,7 +23,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     ...extraInput: LogItemExtraInput
   ): void => {
     this.debug(input, ...extraInput);
-    this.metrics.addMetric(metric, MetricUnit.Count, 1);
+    this.metrics.addMetric(metric, MetricUnit.Count, METRIC_COUNT);
   };
 
   public infoWithMetrics = (
@@ -31,7 +32,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     ...extraInput: LogItemExtraInput
   ): void => {
     this.info(input, ...extraInput);
-    this.metrics.addMetric(metric, MetricUnit.Count, 1);
+    this.metrics.addMetric(metric, MetricUnit.Count, METRIC_COUNT);
   };
 
   public warnWithMetrics = (
@@ -40,7 +41,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     ...extraInput: LogItemExtraInput
   ): void => {
     this.warn(input, ...extraInput);
-    this.metrics.addMetric(metric, MetricUnit.Count, 1);
+    this.metrics.addMetric(metric, MetricUnit.Count, METRIC_COUNT);
   };
 
   public errorWithMetrics = (
@@ -49,7 +50,7 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     ...extraInput: LogItemExtraInput
   ): void => {
     this.error(input, ...extraInput);
-    this.metrics.addMetric(metric, MetricUnit.Count, 1);
+    this.metrics.addMetric(metric, MetricUnit.Count, METRIC_COUNT);
   };
 
   public criticalWithMetrics = (
@@ -58,6 +59,8 @@ export class DataLogger<TLogEvents extends string = string> extends Logger {
     ...extraInput: LogItemExtraInput
   ): void => {
     this.critical(input, ...extraInput);
-    this.metrics.addMetric(metric, MetricUnit.Count, 1);
+    this.metrics.addMetric(metric, MetricUnit.Count, METRIC_COUNT);
   };
 }
+
+export { DataLogger, dataTracer };
