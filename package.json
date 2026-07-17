@@ -22,13 +22,15 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest run --coverage",
-    "format": "oxfmt .",
-    "format:check": "oxfmt --check .",
-    "lint": "oxlint --config oxlint.config.ts",
-    "lint:fix": "oxlint --config oxlint.config.ts --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint --config oxlint.config.ts --fix",
+    "lint:check": "oxlint --config oxlint.config.ts",
     "changeset": "changeset",
     "version": "changeset version",
     "release": "npm run build && changeset publish",
+    "secret_scan": "betterleaks dir . -v",
+    "secret_scan:git": "betterleaks git .",
     "prepare": "husky"
   },
   "dependencies": {
