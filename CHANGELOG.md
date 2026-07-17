@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.7
+
+### Patch Changes
+
+- fix lint/format/secret scan npm scripts and husky hooks to align with automated tooling standards
+
 ## 0.0.6
 
 ### Patch Changes

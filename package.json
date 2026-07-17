@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/data-npm",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "description": "Standardised logger for GOV.UK One Login data pod Lambda functions",
   "repository": {
@@ -22,13 +22,15 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest run --coverage",
-    "format": "oxfmt .",
-    "format:check": "oxfmt --check .",
-    "lint": "oxlint --config oxlint.config.ts",
-    "lint:fix": "oxlint --config oxlint.config.ts --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint --config oxlint.config.ts --fix",
+    "lint:check": "oxlint --config oxlint.config.ts",
     "changeset": "changeset",
     "version": "changeset version",
     "release": "npm run build && changeset publish",
+    "secret_scan": "betterleaks dir . -v",
+    "secret_scan:git": "betterleaks git .",
     "prepare": "husky"
   },
   "dependencies": {
