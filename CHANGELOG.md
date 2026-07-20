@@ -1,5 +1,12 @@
 # @govuk-one-login/data-npm
 
+## 0.0.8
+
+### Patch Changes
+
+- further tweaking to release process
+- add function for exponential backoff retry
+
 ## 0.0.7
 
 ### Patch Changes

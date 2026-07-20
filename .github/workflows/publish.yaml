@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
       packages: write
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -19,11 +18,23 @@ jobs:
         with:
           node-version-file: .nvmrc
       - run: npm install
-      - uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
-        with:
-          publish: npm run release
         env:
-          # Disable Husky hooks in CI — secret scanning is handled by check-and-scan.yaml
           HUSKY: "0"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm run release
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create git tag and GitHub release
+        run: |
+          VERSION="v$(node -p "require('./package.json').version")"
+          if git rev-parse "$VERSION" >/dev/null 2>&1; then
+            echo "Tag $VERSION already exists, skipping."
+          else
+            git tag "$VERSION"
+            git push origin "$VERSION"
+            gh release create "$VERSION" \
+              --title "$VERSION" \
+              --generate-notes \
+              --latest
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
