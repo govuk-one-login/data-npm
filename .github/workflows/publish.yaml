@@ -3,7 +3,9 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -16,17 +18,10 @@ jobs:
       - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
         with:
           node-version-file: .nvmrc
-          registry-url: https://npm.pkg.github.com
-          scope: "@govuk-one-login"
-      - run: |
-          wget -q https://github.com/betterleaks/betterleaks/releases/download/v1.6.1/betterleaks_1.6.1_linux_x64.tar.gz
-          tar -xzf betterleaks_1.6.1_linux_x64.tar.gz
-          sudo mv betterleaks /usr/local/bin/
       - run: npm install
       - uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
           publish: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_ACCESS: public
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
