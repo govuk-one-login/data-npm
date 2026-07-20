@@ -1,5 +1,12 @@
 # @govuk-one-login/data-npm
 
+## 0.0.8
+
+### Patch Changes
+
+- 0aa12eb: - Changes to workflow to publish github releases and tags correctly
+  - add `pause` function so code can wait for a period of time
+
 ## 0.0.7
 
 ### Patch Changes
