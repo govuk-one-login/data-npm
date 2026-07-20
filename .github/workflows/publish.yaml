@@ -23,5 +23,7 @@ jobs:
         with:
           publish: npm run release
         env:
+          # Disable Husky hooks in CI — secret scanning is handled by check-and-scan.yaml
+          HUSKY: "0"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
