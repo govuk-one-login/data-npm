@@ -16,7 +16,6 @@
     - [3. Commit and open a pull request](#3-commit-and-open-a-pull-request)
     - [4. What happens on merge to main](#4-what-happens-on-merge-to-main)
 
-
 ![node](https://img.shields.io/badge/node-24.x-339933?logo=nodedotjs)
 
 Standardised logger for GOV.UK One Login data pod Lambda functions, built on [AWS Lambda Powertools](https://docs.powertools.aws.dev/lambda/typescript/) and published to GitHub Packages.
