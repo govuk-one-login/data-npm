@@ -34,9 +34,9 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@aws-lambda-powertools/logger": "^2.25.2",
-    "@aws-lambda-powertools/metrics": "^2.25.2",
-    "@aws-lambda-powertools/tracer": "^2.25.2"
+    "@aws-lambda-powertools/logger": "^2.34.0",
+    "@aws-lambda-powertools/metrics": "^2.34.0",
+    "@aws-lambda-powertools/tracer": "^2.34.0"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0",
