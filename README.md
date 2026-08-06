@@ -18,19 +18,12 @@
 
 ![node](https://img.shields.io/badge/node-24.x-339933?logo=nodedotjs)
 
-Standardised logger for GOV.UK One Login data pod Lambda functions, built on [AWS Lambda Powertools](https://docs.powertools.aws.dev/lambda/typescript/) and published to GitHub Packages.
+Standardised logger for GOV.UK One Login data pod Lambda functions, built on [AWS Lambda Powertools](https://docs.powertools.aws.dev/lambda/typescript/) and published to npm.
 
 ## Install
 
 ```bash
 npm install @govuk-one-login/data-npm
-```
-
-Requires an `.npmrc` pointing to GitHub Packages:
-
-```
-@govuk-one-login:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
 ```
 
 ## Usage
@@ -148,7 +141,7 @@ git push
 
 Once your PR is merged to `main`, the release workflow automatically:
 
-1. Publishes the package to GitHub Packages
+1. Publishes the package to npm
 2. Creates a git tag (`v0.0.8`, etc.)
 3. Creates a GitHub Release
 

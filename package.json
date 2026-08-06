@@ -15,9 +15,8 @@
   "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
   "publishConfig": {
-    "@govuk-one-login:registry": "https://npm.pkg.github.com",
     "access": "public",
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org"
   },
   "scripts": {
     "build": "tsc",
