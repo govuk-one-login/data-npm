@@ -22,3 +22,21 @@ jobs:
           tar -xzf betterleaks_1.6.1_linux_x64.tar.gz
           sudo mv betterleaks /usr/local/bin/
       - run: betterleaks git .
+
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check version is not already published
+        run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
+
+          echo "Checking if ${PACKAGE_NAME}@${LOCAL_VERSION} exists on npm..."
+
+          if npm view "${PACKAGE_NAME}@${LOCAL_VERSION}" version >/dev/null 2>&1; then
+            echo "::error::Version ${LOCAL_VERSION} of ${PACKAGE_NAME} is already published to npm. Bump the version before merging."
+            exit 1
+          fi
+
+          echo "Version ${LOCAL_VERSION} is not yet published. OK to merge."

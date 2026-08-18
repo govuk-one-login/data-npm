@@ -7,7 +7,30 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2
+      - name: Check if version changed
+        id: diff
+        run: |
+          PREV_VERSION=$(git show HEAD~1:package.json | node -p "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).version")
+          CURR_VERSION=$(node -p "require('./package.json').version")
+          if [ "$PREV_VERSION" != "$CURR_VERSION" ]; then
+            echo "Version changed: ${PREV_VERSION} -> ${CURR_VERSION}"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Version unchanged (${CURR_VERSION}), skipping release."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
   release:
+    needs: check-version
+    if: needs.check-version.outputs.changed == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,22 +45,20 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org
-      - run: npm install
-      - run: npm run release
+      - name: install dependencies
+        run: npm ci
+      - name: create npm release
+        run: npm run release
         env:
           NPM_CONFIG_PROVENANCE: "true"
       - name: Create git tag and GitHub release
         run: |
           VERSION="v$(node -p "require('./package.json').version")"
-          if git rev-parse "$VERSION" >/dev/null 2>&1; then
-            echo "Tag $VERSION already exists, skipping."
-          else
-            git tag "$VERSION"
-            git push origin "$VERSION"
-            gh release create "$VERSION" \
-              --title "$VERSION" \
-              --generate-notes \
-              --latest
-          fi
+          git tag "$VERSION"
+          git push origin "$VERSION"
+          gh release create "$VERSION" \
+            --title "$VERSION" \
+            --generate-notes \
+            --latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
