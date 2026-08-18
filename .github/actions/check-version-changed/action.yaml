@@ -1,0 +1,33 @@
+name: Check version changed
+description: Compares package.json version against a base ref and outputs whether it changed.
+
+inputs:
+  base-ref:
+    description: Git ref to compare the current version against (e.g. origin/main, HEAD~1)
+    required: true
+
+outputs:
+  changed:
+    description: "'true' if the version differs from base-ref, 'false' otherwise"
+    value: ${{ steps.diff.outputs.changed }}
+  version:
+    description: The current version from package.json
+    value: ${{ steps.diff.outputs.version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check if version changed
+      id: diff
+      shell: bash
+      run: |
+        BASE_VERSION=$(git show ${{ inputs.base-ref }}:package.json | node -p "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).version")
+        CURR_VERSION=$(node -p "require('./package.json').version")
+        echo "version=${CURR_VERSION}" >> "$GITHUB_OUTPUT"
+        if [ "$BASE_VERSION" != "$CURR_VERSION" ]; then
+          echo "Version changed: ${BASE_VERSION} -> ${CURR_VERSION}"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "Version unchanged (${CURR_VERSION})."
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+        fi

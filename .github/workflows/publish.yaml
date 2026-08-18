@@ -17,16 +17,9 @@ jobs:
           fetch-depth: 2
       - name: Check if version changed
         id: diff
-        run: |
-          PREV_VERSION=$(git show HEAD~1:package.json | node -p "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).version")
-          CURR_VERSION=$(node -p "require('./package.json').version")
-          if [ "$PREV_VERSION" != "$CURR_VERSION" ]; then
-            echo "Version changed: ${PREV_VERSION} -> ${CURR_VERSION}"
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Version unchanged (${CURR_VERSION}), skipping release."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          fi
+        uses: ./.github/actions/check-version-changed
+        with:
+          base-ref: HEAD~1
 
   release:
     needs: check-version

@@ -31,21 +31,14 @@ jobs:
           fetch-depth: 0
       - name: Check if version changed
         id: version-diff
-        run: |
-          BASE_VERSION=$(git show origin/main:package.json | node -p "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).version")
-          PR_VERSION=$(node -p "require('./package.json').version")
-          if [ "$BASE_VERSION" != "$PR_VERSION" ]; then
-            echo "Version changed: ${BASE_VERSION} -> ${PR_VERSION}"
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Version unchanged (${PR_VERSION}), skipping npm check."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          fi
+        uses: ./.github/actions/check-version-changed
+        with:
+          base-ref: origin/main
       - name: Check version is not already published
         if: steps.version-diff.outputs.changed == 'true'
         run: |
           PACKAGE_NAME=$(node -p "require('./package.json').name")
-          LOCAL_VERSION=$(node -p "require('./package.json').version")
+          LOCAL_VERSION="${{ steps.version-diff.outputs.version }}"
 
           echo "Checking if ${PACKAGE_NAME}@${LOCAL_VERSION} exists on npm..."
 
