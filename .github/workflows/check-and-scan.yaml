@@ -27,7 +27,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Check if version changed
+        id: version-diff
+        run: |
+          BASE_VERSION=$(git show origin/main:package.json | node -p "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).version")
+          PR_VERSION=$(node -p "require('./package.json').version")
+          if [ "$BASE_VERSION" != "$PR_VERSION" ]; then
+            echo "Version changed: ${BASE_VERSION} -> ${PR_VERSION}"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Version unchanged (${PR_VERSION}), skipping npm check."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Check version is not already published
+        if: steps.version-diff.outputs.changed == 'true'
         run: |
           PACKAGE_NAME=$(node -p "require('./package.json').name")
           LOCAL_VERSION=$(node -p "require('./package.json').version")
