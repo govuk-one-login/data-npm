@@ -27,7 +27,7 @@
     "lint:check": "oxlint --config oxlint.config.ts",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "npm run build && changeset publish --provenance",
+    "release": "npm run build && changeset publish",
     "secret_scan": "betterleaks dir . -v",
     "secret_scan:git": "betterleaks git .",
     "prepare": "husky"
