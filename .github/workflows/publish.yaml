@@ -24,8 +24,6 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: npm install
       - run: npm run release
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Create git tag and GitHub release
         run: |
           VERSION="v$(node -p "require('./package.json').version")"
