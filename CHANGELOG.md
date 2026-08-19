@@ -1,5 +1,12 @@
 # @govuk-one-login/data-npm
 
+## 0.0.9
+
+### Patch Changes
+
+- - Add MIT license
+  - Bump @changesets/cli from v2 to v3
+
 ## 0.0.8
 
 ### Patch Changes
