@@ -15,6 +15,7 @@
     - [2. Version the package](#2-version-the-package)
     - [3. Commit and open a pull request](#3-commit-and-open-a-pull-request)
     - [4. What happens on merge to main](#4-what-happens-on-merge-to-main)
+  - [Dependabot PRs](#dependabot-prs)
 
 ![node](https://img.shields.io/badge/node-24.x-339933?logo=nodedotjs)
 
@@ -146,3 +147,9 @@ Once your PR is merged to `main`, the release workflow automatically:
 3. Creates a GitHub Release
 
 If the version is already published (e.g. a non-release PR), the workflow skips gracefully.
+
+## Dependabot PRs
+
+A CI workflow enforces that Dependabot PRs include a version bump before they can be merged. If the `package.json` version has not changed compared to `main`, the `bump-version` check will fail with instructions.
+
+To fix a failing Dependabot PR, check out the branch locally and create a changeset as defined above. This ensures every dependency update flows through the standard Changesets process and triggers a release on merge.
