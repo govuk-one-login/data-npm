@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/data-npm",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "private": false,
   "description": "Standardised logger for GOV.UK One Login data pod Lambda functions",
   "license": "MIT",

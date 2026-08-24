@@ -1,5 +1,15 @@
 # @govuk-one-login/data-npm
 
+## 0.0.11
+
+### Patch Changes
+
+- bumped the prod-deps group across 1 directory with 3 updates
+
+  - Updated @aws-lambda-powertools/logger from 2.34.0 to 2.35.0
+  - Updated @aws-lambda-powertools/metrics from 2.34.0 to 2.35.0
+  - Updated @aws-lambda-powertools/tracer from 2.34.0 to 2.35.0
+
 ## 0.0.10
 
 ### Patch Changes
