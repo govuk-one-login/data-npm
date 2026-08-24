@@ -32,3 +32,4 @@ jobs:
         run: |
           echo "::error::This Dependabot PR does not include a version bump. Please create a changeset and bump the version before merging so a new version of the package is generated."
           echo "Check https://github.com/govuk-one-login/data-npm/blob/main/README.md on how to create a changeset and release a new version of the package."
+          exit 1
