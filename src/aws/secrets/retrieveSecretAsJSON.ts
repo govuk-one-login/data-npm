@@ -1,6 +1,6 @@
 import { GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
 import type { SecretsManagerClient } from "@aws-sdk/client-secrets-manager";
-import { tryParseJSONOrUndefined } from "../json/tryParseJSON.js";
+import { tryParseJSONOrUndefined } from "../../json/tryParseJSON.js";
 
 /**
  * Retrieves and parses a JSON secret from Secrets Manager.

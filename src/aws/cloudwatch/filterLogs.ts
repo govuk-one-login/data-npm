@@ -8,8 +8,8 @@ import type {
   FilteredLogEvent,
   FilterLogEventsCommandInput,
 } from "@aws-sdk/client-cloudwatch-logs";
-import { calculateBackoff } from "../time/backoff.js";
-import { pause } from "../time/pause.js";
+import { calculateBackoff } from "../../time/backoff.js";
+import { pause } from "../../time/pause.js";
 
 /**
  * Returns the names of the most recently active log streams in a log group.
