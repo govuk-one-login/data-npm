@@ -74,8 +74,12 @@ logger.infoWithMetrics("msg", MyLogEvents.SomethingHappened);
 | `groupBy(array, predicate)`                                                                 | Groups an array of items by a key derived from each item                                 |
 | `renameObjectKey(obj, oldKeyPath, newKey)`                                                  | Renames a key in an object, supporting nested keys via a key path array                  |
 | `removeQueryParamsFromUrl(url)`                                                             | Removes query parameters from a URL, returning just the origin and pathname              |
-| `toBase64Url(data)`                                                                         | Encodes a string or object to a base64url string                                         |
+| `stringToBase64Url(data)`                                                                   | Encodes a string to a base64url string                                                   |
+| `objectToBase64Url(data)`                                                                   | Encodes an object to a base64url string (JSON-serialised first)                          |
+| `fromBase64Url(data)`                                                                       | Decodes a base64url string back to a plain string                                        |
+| `fromBase64UrlToObject(data)`                                                               | Decodes a base64url string and parses it as JSON                                         |
 | `nowEpochSeconds()`                                                                         | Returns the current timestamp as Unix epoch seconds                                      |
+| `nowEpochMilliseconds()`                                                                    | Returns the current timestamp as Unix epoch milliseconds                                 |
 | `pause(ms)`                                                                                 | Returns a promise that resolves after the given number of milliseconds                   |
 | `calculateBackoff(options)`                                                                 | Calculates an exponential backoff delay with optional jitter                             |
 | `getItem(client, tableName, key)`                                                           | Gets a single item from a DynamoDB table by key                                          |

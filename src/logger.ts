@@ -5,11 +5,15 @@ import { Tracer } from "@aws-lambda-powertools/tracer";
 
 const METRIC_COUNT = 1;
 
+/** @deprecated Use the tracer from `shared-signals` instead. */
 const dataTracer = new Tracer();
 
 /**
  * A logger that combines AWS Lambda Powertools structured logging with CloudWatch custom metrics.
  * Each log method has a paired `WithMetrics` variant that emits a metric alongside the log.
+ *
+ * @deprecated Use the logger from `txma-shared-signals` instead.
+ * @see {@link txma-shared-signals/common/sharedServices/logger.ts}
  */
 class DataLogger<TLogEvents extends string = string> extends Logger {
   public metrics: Metrics;

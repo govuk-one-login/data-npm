@@ -9,3 +9,15 @@
 export function nowEpochSeconds(): number {
   return Math.round(Date.now() / 1000);
 }
+
+/**
+ * Returns the current timestamp as Unix epoch milliseconds.
+ *
+ * @returns The current time in milliseconds since the Unix epoch.
+ *
+ * @example
+ * nowEpochMilliseconds() // e.g. 1724515200000
+ */
+export function nowEpochMilliseconds(): number {
+  return Date.now();
+}
