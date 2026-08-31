@@ -46,8 +46,8 @@
     "@types/aws-lambda": "^8.10.126",
     "@vitest/coverage-v8": "^4.1.11",
     "husky": "^9.1.7",
-    "oxfmt": "^0.64.0",
-    "oxlint": "^1.79.0",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
     "oxlint-tsgolint": "^7.0.2001",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
