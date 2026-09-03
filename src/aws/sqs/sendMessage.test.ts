@@ -11,7 +11,7 @@ describe("sendMessage", () => {
     const result = await sendMessage(
       mockClient,
       "https://sqs.eu-west-2.amazonaws.com/123/my-queue",
-      { foo: "bar" },
+      JSON.stringify({ foo: "bar" }),
     );
     expect(result).toBe("abc-123");
     expect(mockSend).toHaveBeenCalledWith(expect.any(SendMessageCommand));
@@ -22,7 +22,7 @@ describe("sendMessage", () => {
     const result = await sendMessage(
       mockClient,
       "https://sqs.eu-west-2.amazonaws.com/123/my-queue",
-      {},
+      JSON.stringify({}),
     );
     expect(result).toBeUndefined();
   });

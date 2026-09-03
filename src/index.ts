@@ -4,6 +4,7 @@ export * from "./env/index.js";
 export * from "./json/index.js";
 export * from "./jws/index.js";
 export * from "./object/index.js";
+export * from "./array/index.js";
 export * from "./encoding/index.js";
 export * from "./url/index.js";
 export * from "./time/index.js";

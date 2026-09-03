@@ -89,7 +89,7 @@ logger.infoWithMetrics("msg", MyLogEvents.SomethingHappened);
 | `batchGetItems(client, tableName, keys)`                                                    | Batch gets multiple items from a DynamoDB table                                          |
 | `signData(client, payload, keyArn)`                                                         | Signs a payload using a KMS key, returning the signature                                 |
 | `retrieveSecret(client, secretId)`                                                          | Retrieves a secret string from Secrets Manager                                           |
-| `retrieveSecretAsJSON(client, secretId)`                                                    | Retrieves and parses a JSON secret from Secrets Manager                                  |
+| `retrieveSecretAsJSON(client, secretId)`                                                    | Retrieves and parses a JSON secret from Secrets Manager, returning `unknown`             |
 | `describeSecret(client, secretId)`                                                          | Returns the metadata for a secret in Secrets Manager                                     |
 | `sendMessage(client, queueUrl, messageBody)`                                                | Sends a message to an SQS queue                                                          |
 | `sendBatchMessage(client, queueUrl, messages)`                                              | Sends a batch of messages to an SQS queue                                                |
