@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.1.0
+
+### Minor Changes
+
+- Add utility functions: env, json, jws, object, string, time, dynamo, kms, secrets, sqs, and cloudwatch helpers
+
 ## 0.0.11
 
 ### Patch Changes
