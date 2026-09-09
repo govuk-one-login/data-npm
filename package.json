@@ -41,7 +41,9 @@
     "@aws-sdk/client-dynamodb": "^3.1119.0",
     "@aws-sdk/client-kms": "^3.1119.0",
     "@aws-sdk/client-secrets-manager": "^3.1119.0",
-    "@aws-sdk/lib-dynamodb": "^3.1119.0"
+    "@aws-sdk/client-sqs": "^3.1119.0",
+    "@aws-sdk/lib-dynamodb": "^3.1119.0",
+    "@aws-sdk/util-arn-parser": "3.972.40"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.1",
