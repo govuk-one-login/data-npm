@@ -5,6 +5,7 @@
   - [Usage](#usage)
     - [Extending with service-specific log events](#extending-with-service-specific-log-events)
   - [Generic log events](#generic-log-events)
+  - [Utilities](#utilities)
   - [Development](#development)
     - [Code formatting](#code-formatting)
   - [Publishing](#publishing)
@@ -19,7 +20,7 @@
 
 ![node](https://img.shields.io/badge/node-24.x-339933?logo=nodedotjs)
 
-Standardised logger for GOV.UK One Login data pod Lambda functions, built on [AWS Lambda Powertools](https://docs.powertools.aws.dev/lambda/typescript/) and published to npm.
+Standardised logger and utility functions for GOV.UK One Login data pod Lambda functions, built on [AWS Lambda Powertools](https://docs.powertools.aws.dev/lambda/typescript/) and published to npm.
 
 ## Install
 
@@ -59,6 +60,41 @@ logger.infoWithMetrics("msg", MyLogEvents.SomethingHappened);
 | `LogEvents.StartedProcessing`     | `'Started Processing'`     |
 | `LogEvents.SuccessfullyProcessed` | `'Successfully Processed'` |
 | `LogEvents.ErrorProcessing`       | `'Error Processing'`       |
+
+## Utilities
+
+| Export                                                                                      | Description                                                                              |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `getEnv(name)`                                                                              | Returns an environment variable value, throwing if it is not set                         |
+| `tryParseJSON(jsonString)`                                                                  | Parses a JSON string, returning `{}` on failure                                          |
+| `tryParseJSONOrUndefined(jsonString)`                                                       | Parses a JSON string, returning `undefined` on failure                                   |
+| `decodeSET(set)`                                                                            | Decodes a compact JWS token into its parsed header, payload, and raw signature           |
+| `getJWSParts(set)`                                                                          | Splits a compact JWS token into its raw header, payload, and signature parts             |
+| `flattenObject(obj)`                                                                        | Recursively flattens a nested object into dot-notation keys                              |
+| `groupBy(array, predicate)`                                                                 | Groups an array of items by a key derived from each item                                 |
+| `renameObjectKey(obj, oldKeyPath, newKey)`                                                  | Renames a key in an object, supporting nested keys via a key path array                  |
+| `removeQueryParamsFromUrl(url)`                                                             | Removes query parameters from a URL, returning just the origin and pathname              |
+| `stringToBase64Url(data)`                                                                   | Encodes a string to a base64url string                                                   |
+| `objectToBase64Url(data)`                                                                   | Encodes an object to a base64url string (JSON-serialised first)                          |
+| `fromBase64Url(data)`                                                                       | Decodes a base64url string back to a plain string                                        |
+| `fromBase64UrlToObject(data)`                                                               | Decodes a base64url string and parses it as JSON                                         |
+| `nowEpochSeconds()`                                                                         | Returns the current timestamp as Unix epoch seconds                                      |
+| `nowEpochMilliseconds()`                                                                    | Returns the current timestamp as Unix epoch milliseconds                                 |
+| `pause(ms)`                                                                                 | Returns a promise that resolves after the given number of milliseconds                   |
+| `calculateBackoff(options)`                                                                 | Calculates an exponential backoff delay with optional jitter                             |
+| `getItem(client, tableName, key)`                                                           | Gets a single item from a DynamoDB table by key                                          |
+| `putItem(client, tableName, data)`                                                          | Puts an item into a DynamoDB table                                                       |
+| `updateItem(client, params)`                                                                | Updates an existing item in a DynamoDB table                                             |
+| `queryGSI(client, tableName, indexName, keyConditionExpression, expressionAttributeValues)` | Queries a DynamoDB Global Secondary Index                                                |
+| `batchGetItems(client, tableName, keys)`                                                    | Batch gets multiple items from a DynamoDB table                                          |
+| `signData(client, payload, keyArn)`                                                         | Signs a payload using a KMS key, returning the signature                                 |
+| `retrieveSecret(client, secretId)`                                                          | Retrieves a secret string from Secrets Manager                                           |
+| `retrieveSecretAsJSON(client, secretId)`                                                    | Retrieves and parses a JSON secret from Secrets Manager, returning `unknown`             |
+| `describeSecret(client, secretId)`                                                          | Returns the metadata for a secret in Secrets Manager                                     |
+| `sendMessage(client, queueUrl, messageBody)`                                                | Sends a message to an SQS queue                                                          |
+| `sendBatchMessage(client, queueUrl, messages)`                                              | Sends a batch of messages to an SQS queue                                                |
+| `getQueueUrlFromArn(arn)`                                                                   | Converts an SQS ARN to a queue URL                                                       |
+| `filterLogs(client, logGroupName, filters, startTime?, maxRetries?)`                        | Filters CloudWatch log events matching all given strings, with exponential backoff retry |
 
 ## Development
 
