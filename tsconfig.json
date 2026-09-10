@@ -5,6 +5,7 @@
     "@tsconfig/strictest/tsconfig.json"
   ],
   "compilerOptions": {
+    "types": ["node"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "skipLibCheck": false,

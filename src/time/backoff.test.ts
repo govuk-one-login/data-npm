@@ -2,14 +2,11 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { calculateBackoff } from "./backoff";
 
 describe("calculateBackoff", () => {
-  // Always clean up mocks after tests to prevent cross-test contamination
   afterEach(() => {
     vi.restoreAllMocks();
   });
 
   describe("deterministic exponential calculation (jitter disabled)", () => {
-    // Best Practice: Use an array of objects for `.each` so arguments are named.
-    // This makes the test parameters highly readable.
     const deterministicCases = [
       // Standard default behavior (base 100, factor 2, max 10000)
       { attempt: 0, expected: 100, scenario: "first attempt (100 * 2^0)" },
@@ -35,7 +32,6 @@ describe("calculateBackoff", () => {
       { attempt: 5, maxDelay: 500, expected: 500, scenario: "custom maxDelay cap is respected" },
     ];
 
-    // Best Practice: Use test name templating ($variable) to generate dynamic test names
     it.each(deterministicCases)(
       "returns $expected ms for $scenario",
       ({ attempt, baseDelay, factor, maxDelay, expected }) => {
@@ -62,7 +58,6 @@ describe("calculateBackoff", () => {
     it.each(jitterCases)(
       "returns $expected ms when Math.random is $randomValue ($boundary)",
       ({ randomValue, expected }) => {
-        // Best Practice: Mock non-deterministic globals to make tests reliable
         vi.spyOn(Math, "random").mockReturnValue(randomValue);
 
         const result = calculateBackoff({
