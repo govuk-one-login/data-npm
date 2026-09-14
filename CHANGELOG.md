@@ -1,5 +1,20 @@
 # @govuk-one-login/data-npm
 
+## 0.0.12
+
+### Patch Changes
+
+- Bump the dev-deps group across 1 directory with 6 updates
+
+  | Package                                                                                            | From       | To         |
+  | -------------------------------------------------------------------------------------------------- | ---------- | ---------- |
+  | [@changesets/cli](https://github.com/changesets/changesets/tree/HEAD/packages/cli)                 | `3.0.1`    | `3.0.2`    |
+  | [@types/aws-lambda](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/aws-lambda) | `8.10.162` | `8.10.163` |
+  | [@vitest/coverage-v8](https://github.com/vitest-dev/vitest/tree/HEAD/packages/coverage-v8)         | `4.1.11`   | `5.0.0`    |
+  | [oxfmt](https://github.com/oxc-project/oxc/tree/HEAD/npm/oxfmt)                                    | `0.64.0`   | `0.67.0`   |
+  | [oxlint](https://github.com/oxc-project/oxc/tree/HEAD/npm/oxlint)                                  | `1.79.0`   | `1.82.0`   |
+  | [vitest](https://github.com/vitest-dev/vitest/tree/HEAD/packages/vitest)                           | `4.1.11`   | `5.0.0`    |
+
 ## 0.0.11
 
 ### Patch Changes
