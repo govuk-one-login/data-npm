@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.13
+
+### Patch Changes
+
+- Migrated to eslint and prettier
+
 ## 0.0.12
 
 ### Patch Changes
