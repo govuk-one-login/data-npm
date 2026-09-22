@@ -32,7 +32,12 @@ describe("calculateBackoff", () => {
         expected: 450,
         scenario: "custom base and factor (50 * 3^2)",
       },
-      { attempt: 5, maxDelay: 500, expected: 500, scenario: "custom maxDelay cap is respected" },
+      {
+        attempt: 5,
+        maxDelay: 500,
+        expected: 500,
+        scenario: "custom maxDelay cap is respected",
+      },
     ];
 
     // Best Practice: Use test name templating ($variable) to generate dynamic test names

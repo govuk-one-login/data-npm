@@ -42,7 +42,13 @@ interface BackoffOptions {
  */
 export function calculateBackoff(options: BackoffOptions = {}): number {
   // Destructure with sensible defaults
-  const { attempt = 0, baseDelay = 100, maxDelay = 10000, factor = 2, jitter = true } = options;
+  const {
+    attempt = 0,
+    baseDelay = 100,
+    maxDelay = 10000,
+    factor = 2,
+    jitter = true,
+  } = options;
 
   // Calculate the raw exponential backoff: baseDelay * (factor ^ attempt)
   const exponentialDelay = baseDelay * Math.pow(factor, attempt);

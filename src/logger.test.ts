@@ -15,7 +15,7 @@ describe("DataLogger", () => {
   });
 
   it("infoWithMetrics calls info and addMetric", () => {
-    const infoSpy = vi.spyOn(logger, "info").mockImplementation(() => {});
+    const infoSpy = vi.spyOn(logger, "info");
     const metricSpy = vi
       .spyOn(logger.metrics, "addMetric")
       .mockImplementation(() => logger.metrics);
@@ -23,11 +23,15 @@ describe("DataLogger", () => {
     logger.infoWithMetrics("msg", LogEvents.StartedProcessing);
 
     expect(infoSpy).toHaveBeenCalledWith("msg");
-    expect(metricSpy).toHaveBeenCalledWith(LogEvents.StartedProcessing, MetricUnit.Count, 1);
+    expect(metricSpy).toHaveBeenCalledWith(
+      LogEvents.StartedProcessing,
+      MetricUnit.Count,
+      1,
+    );
   });
 
   it("warnWithMetrics calls warn and addMetric", () => {
-    const warnSpy = vi.spyOn(logger, "warn").mockImplementation(() => {});
+    const warnSpy = vi.spyOn(logger, "warn");
     const metricSpy = vi
       .spyOn(logger.metrics, "addMetric")
       .mockImplementation(() => logger.metrics);
@@ -35,11 +39,15 @@ describe("DataLogger", () => {
     logger.warnWithMetrics("msg", LogEvents.ErrorProcessing);
 
     expect(warnSpy).toHaveBeenCalledWith("msg");
-    expect(metricSpy).toHaveBeenCalledWith(LogEvents.ErrorProcessing, MetricUnit.Count, 1);
+    expect(metricSpy).toHaveBeenCalledWith(
+      LogEvents.ErrorProcessing,
+      MetricUnit.Count,
+      1,
+    );
   });
 
   it("errorWithMetrics calls error and addMetric", () => {
-    const errorSpy = vi.spyOn(logger, "error").mockImplementation(() => {});
+    const errorSpy = vi.spyOn(logger, "error");
     const metricSpy = vi
       .spyOn(logger.metrics, "addMetric")
       .mockImplementation(() => logger.metrics);
@@ -47,6 +55,10 @@ describe("DataLogger", () => {
     logger.errorWithMetrics("msg", LogEvents.ErrorProcessing);
 
     expect(errorSpy).toHaveBeenCalledWith("msg");
-    expect(metricSpy).toHaveBeenCalledWith(LogEvents.ErrorProcessing, MetricUnit.Count, 1);
+    expect(metricSpy).toHaveBeenCalledWith(
+      LogEvents.ErrorProcessing,
+      MetricUnit.Count,
+      1,
+    );
   });
 });
