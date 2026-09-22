@@ -12,7 +12,9 @@ class DataLogger<TLogEvents extends string = string> extends Logger {
 
   public constructor(serviceName: string, namespace?: string) {
     super();
-    this.metrics = new Metrics(namespace ? { namespace, serviceName } : { serviceName });
+    this.metrics = new Metrics(
+      namespace ? { namespace, serviceName } : { serviceName },
+    );
   }
 
   public debugWithMetrics = (

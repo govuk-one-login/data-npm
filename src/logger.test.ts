@@ -23,7 +23,11 @@ describe("DataLogger", () => {
     logger.infoWithMetrics("msg", LogEvents.StartedProcessing);
 
     expect(infoSpy).toHaveBeenCalledWith("msg");
-    expect(metricSpy).toHaveBeenCalledWith(LogEvents.StartedProcessing, MetricUnit.Count, 1);
+    expect(metricSpy).toHaveBeenCalledWith(
+      LogEvents.StartedProcessing,
+      MetricUnit.Count,
+      1,
+    );
   });
 
   it("warnWithMetrics calls warn and addMetric", () => {
@@ -35,7 +39,11 @@ describe("DataLogger", () => {
     logger.warnWithMetrics("msg", LogEvents.ErrorProcessing);
 
     expect(warnSpy).toHaveBeenCalledWith("msg");
-    expect(metricSpy).toHaveBeenCalledWith(LogEvents.ErrorProcessing, MetricUnit.Count, 1);
+    expect(metricSpy).toHaveBeenCalledWith(
+      LogEvents.ErrorProcessing,
+      MetricUnit.Count,
+      1,
+    );
   });
 
   it("errorWithMetrics calls error and addMetric", () => {
@@ -47,6 +55,10 @@ describe("DataLogger", () => {
     logger.errorWithMetrics("msg", LogEvents.ErrorProcessing);
 
     expect(errorSpy).toHaveBeenCalledWith("msg");
-    expect(metricSpy).toHaveBeenCalledWith(LogEvents.ErrorProcessing, MetricUnit.Count, 1);
+    expect(metricSpy).toHaveBeenCalledWith(
+      LogEvents.ErrorProcessing,
+      MetricUnit.Count,
+      1,
+    );
   });
 });
