@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.14
+
+### Patch Changes
+
+- Updated vscode settings to prefer eslint/prettier
+
 ## 0.0.13
 
 ### Patch Changes
