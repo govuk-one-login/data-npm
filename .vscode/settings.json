@@ -1,8 +1,6 @@
 {
   "editor.formatOnSave": true,
   "files.autoSave": "onFocusChange",
-  "oxc.enable.oxlint": true,
-  "oxc.enable.oxfmt": true,
   "yaml.customTags": [
     "!Base64 scalar",
     "!Cidr scalar",
