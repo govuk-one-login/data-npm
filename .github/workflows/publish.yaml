@@ -29,7 +29,7 @@ jobs:
       contents: write
       id-token: write
     env:
-      # Disable Husky git hooks in CI — linting, formatting, and secret scanning
+      # Disable Husky git hooks in CI — linting and formatting
       # are handled by the check-and-scan workflow instead.
       HUSKY: "0"
     steps:
