@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/data-npm",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "private": false,
   "description": "Standardised logger for GOV.UK One Login data pod Lambda functions",
   "license": "MIT",
@@ -10,6 +10,7 @@
   },
   "files": [
     "dist/",
+    "src/config/tsconfig.json",
     "README.md"
   ],
   "type": "module",

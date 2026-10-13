@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.16
+
+### Patch Changes
+
+- Include tsconfig.json as a file for this package
+
 ## 0.0.15
 
 ### Patch Changes
