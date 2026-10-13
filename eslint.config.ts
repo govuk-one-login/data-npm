@@ -1,18 +1,8 @@
 // @ts-check
 
-import js from "@eslint/js";
-import tseslint from "typescript-eslint";
-import { defineConfig } from "eslint/config";
+// IMPORTANT: Because this is importing from our own project, we are not using the exported names
+// instead we are simply importing the config directly
+// not ideal, but prettier had issues with folder imports
+import { config as eslintConfig } from "./src/config/eslint.config.ts";
 
-export default defineConfig([
-  { ignores: ["dist", "coverage"] },
-  {
-    files: ["**/*.{js,ts}"],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      tseslint.configs.strict,
-      tseslint.configs.stylistic,
-    ],
-  },
-]);
+export default eslintConfig;

@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "@tsconfig/node24/tsconfig.json",
+    "@tsconfig/node-ts/tsconfig.json",
+    "@tsconfig/strictest/tsconfig.json"
+  ],
+  "compilerOptions": {
+    // required as we're using esbuild
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    // required to export vite globals apis
+    "types": ["vitest/globals"],
+    // we want to be able to use some typescript specific features like enums
+    "erasableSyntaxOnly": false
+  }
+}
