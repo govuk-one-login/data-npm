@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.17
+
+### Patch Changes
+
+- Promoted some of our dev dependencies now that we are sharing config for these tools
+
 ## 0.0.16
 
 ### Patch Changes
