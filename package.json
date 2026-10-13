@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/data-npm",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "private": false,
   "description": "Standardised logger for GOV.UK One Login data pod Lambda functions",
   "license": "MIT",
@@ -14,7 +14,10 @@
   ],
   "type": "module",
   "types": "./dist/index.d.ts",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./tsconfig.json": "./src/config/tsconfig.json"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
