@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.15
+
+### Patch Changes
+
+- Added our standard tooling configuration (eslint, prettier and tsconfig) to the list of exports
+
 ## 0.0.14
 
 ### Patch Changes
