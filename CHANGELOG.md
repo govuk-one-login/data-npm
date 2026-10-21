@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.19
+
+### Patch Changes
+
+- bump source-map-js from 1.2.1 to 1.2.2
+
 ## 0.0.18
 
 ### Patch Changes
