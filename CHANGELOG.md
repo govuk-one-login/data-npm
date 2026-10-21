@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.20
+
+### Patch Changes
+
+- bump launch-editor from 2.14.1 to 2.14.2
+
 ## 0.0.19
 
 ### Patch Changes
