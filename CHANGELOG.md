@@ -1,5 +1,13 @@
 # @govuk-one-login/data-npm
 
+## 0.0.21
+
+### Patch Changes
+
+- - Bump actions/setup-node from 7.0.0 to 7.1.0
+  - Bump the prod-deps group across 1 directory with 8 updates
+  - Bump the dev-deps group across 1 directory with 6 updates
+
 ## 0.0.20
 
 ### Patch Changes
