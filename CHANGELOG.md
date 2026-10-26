@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.22
+
+### Patch Changes
+
+- updated dependabot config to ignore typescript 7 until we have a workaround
+
 ## 0.0.21
 
 ### Patch Changes
