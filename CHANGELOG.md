@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.23
+
+### Patch Changes
+
+- c02b520: Bumps the prod-deps group with 3 updates: @typescript-eslint/eslint-plugin, @typescript-eslint/parser and typescript-eslint.
+
 ## 0.0.22
 
 ### Patch Changes
