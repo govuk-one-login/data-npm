@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.24
+
+### Patch Changes
+
+- Bump eslint from 10.13.0 to 10.14.0
+
 ## 0.0.23
 
 ### Patch Changes
