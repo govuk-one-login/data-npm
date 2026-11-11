@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.25
+
+### Patch Changes
+
+- Update vitest/coverage-v8 to 5.1.0 & globals to 17.14.0
+
 ## 0.0.24
 
 ### Patch Changes
