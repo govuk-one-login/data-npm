@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.26
+
+### Patch Changes
+
+- bump the prod-deps group with 7 updates
+
 ## 0.0.25
 
 ### Patch Changes
