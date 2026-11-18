@@ -1,5 +1,11 @@
 # @govuk-one-login/data-npm
 
+## 0.0.27
+
+### Patch Changes
+
+- bump minimatch, eslint, @typescript-eslint/eslint-plugin, @typescript-eslint/parser and typescript-eslint
+
 ## 0.0.26
 
 ### Patch Changes
