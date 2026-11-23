@@ -52,7 +52,7 @@
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
     "@types/aws-lambda": "^8.10.164",
-    "@vitest/coverage-v8": "^5.1.0",
+    "@vitest/coverage-v8": "^5.1.1",
     "globals": "^17.14.0",
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
