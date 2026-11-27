@@ -1,5 +1,15 @@
 # @govuk-one-login/data-npm
 
+## 0.1.0
+
+### Minor Changes
+
+- Publish Pact contract files under `pacts/`, starting with the `FullSecurityEvent` message contract between txma-shared-signals (consumer) and txma-rp-events (provider)
+
+### Patch Changes
+
+- 5cb6caf: dependabot bump the dev-deps group with 2 updates
+
 ## 0.0.27
 
 ### Patch Changes
