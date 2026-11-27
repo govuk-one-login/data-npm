@@ -7,6 +7,9 @@
   - [Generic log events](#generic-log-events)
   - [Development](#development)
     - [Code formatting](#code-formatting)
+  - [Pact contract files](#pact-contract-files)
+    - [Updating a pact](#updating-a-pact)
+    - [Using a pact in a provider](#using-a-pact-in-a-provider)
   - [Publishing](#publishing)
     - [1. Create a changeset](#1-create-a-changeset)
       - [Single change](#single-change)
@@ -72,6 +75,36 @@ npm test
 
 ```bash
 npm run format
+```
+
+## Pact contract files
+
+The `pacts/` directory holds [Pact](https://docs.pact.io/) contract files shared between services, and is published with the package. Each file is named `<consumer>-<provider>.json`. Consumers generate pacts from their own contract tests; providers install this package and verify against the version they depend on.
+
+| Pact file                                 | Consumer              | Provider         | Contract                                                                  |
+| ----------------------------------------- | --------------------- | ---------------- | ------------------------------------------------------------------------- |
+| `txma-shared-signals-txma-rp-events.json` | `txma-shared-signals` | `txma-rp-events` | `FullSecurityEvent` messages sent by rp-events on the RP events SQS queue |
+
+Pact files are public, so they must only contain synthetic example data.
+
+### Updating a pact
+
+1. Run the consumer's contract tests (`npm run test:contract` in `txma-shared-signals`) to regenerate the pact.
+2. Run `DATA_NPM_PATH=<path to this repo> npm run pact:export` in the consumer to copy it into `pacts/`.
+3. Add a changeset (see [Publishing](#publishing)). Use `minor` for a new or changed contract.
+4. `npm test` checks that every pact file is valid and named after its consumer and provider.
+5. Once released, the provider bumps its `@govuk-one-login/data-npm` version to pick up the change and verifies it.
+
+### Using a pact in a provider
+
+Pact files are exported under `@govuk-one-login/data-npm/pacts/*`:
+
+```typescript
+import { createRequire } from "node:module";
+
+const pactPath = createRequire(import.meta.url).resolve(
+  "@govuk-one-login/data-npm/pacts/txma-shared-signals-txma-rp-events.json",
+);
 ```
 
 ## Publishing

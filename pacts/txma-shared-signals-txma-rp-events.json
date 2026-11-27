@@ -1,0 +1,143 @@
+{
+  "consumer": {
+    "name": "txma-shared-signals"
+  },
+  "interactions": [
+    {
+      "contents": {
+        "content": {
+          "audience": "https://audience.example.gov.uk/",
+          "event_id": "a1b2c3d4-0000-4000-8000-000000000001",
+          "event_timestamp_ms": 1700000000000,
+          "event_type": "https://vocab.account.gov.uk/secevent/v1/activity/accountLogin?extended=false",
+          "metadata": {
+            "audit_event_name": "AUTH_EXAMPLE_AUDIT_EVENT",
+            "signal_name": "example-signal",
+            "signal_type": "STANDARD"
+          },
+          "security_event": {
+            "aud": "https://audience.example.gov.uk/",
+            "events": {
+              "https://schemas.openid.net/secevent/risc/event-type/account-enabled": {}
+            },
+            "iss": "https://issuer.example.gov.uk/"
+          }
+        },
+        "contentType": "application/json",
+        "encoded": false
+      },
+      "description": "a FullSecurityEvent for an RP",
+      "matchingRules": {
+        "body": {
+          "$.audience": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.event_id": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.event_timestamp_ms": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "integer"
+              }
+            ]
+          },
+          "$.event_type": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "^https?:\\/\\/\\S+$"
+              }
+            ]
+          },
+          "$.metadata.audit_event_name": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.metadata.signal_name": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.metadata.signal_type": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "^(STANDARD|EXTENDED|VERIFICATION)$"
+              }
+            ]
+          },
+          "$.security_event.aud": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.security_event.events": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "values"
+              }
+            ]
+          },
+          "$.security_event.events.*": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.security_event.iss": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          }
+        }
+      },
+      "pending": false,
+      "type": "Asynchronous/Messages"
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "17.1.4"
+    },
+    "pactRust": {
+      "ffi": "0.5.8",
+      "models": "1.3.16"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "txma-rp-events"
+  }
+}
